@@ -17,6 +17,9 @@ deck.addEventListener('click', event => {
         selectedCard.classList.toggle('show');
         selectedCard.classList.toggle('open');
         activateCard(selectedCard);
+        if (activeCards.length == 2) {
+            checkMatch();
+        }
     }
 });
 
@@ -26,6 +29,15 @@ function activateCard(selectedCard) {
     console.log(activeCards);
 }
 
+function checkMatch() {
+    if (activeCards[0].childNodes[1] ==
+        activeCards[1].childNodes[1]) {
+        console.log("match");
+    }
+    else {
+        console.log("not match");
+    }
+}
 
 /*
  * Display the cards on the page
@@ -48,7 +60,6 @@ function shuffle(array) {
 
     return array;
 }
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
