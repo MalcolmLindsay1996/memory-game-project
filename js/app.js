@@ -12,6 +12,8 @@ deck.addEventListener('click', event => {
     const selectedCard = event.target;
     if(selectedCard.classList.contains('card')) {
         console.log(selectedCard);
+        selectedCard.classList.toggle('show');
+        selectedCard.classList.toggle('open');
     }   
 })
 
