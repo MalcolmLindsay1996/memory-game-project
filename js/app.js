@@ -12,19 +12,19 @@ let activeCards = [];
 //  Implementing event delegation in order to detect when a card has been selected, this is computationally more efficient then adding event listeners to each of the cards individually 
 deck.addEventListener('click', event => {
     const selectedCard = event.target;
-    if(selectedCard.classList.contains('card')) {
+    if (selectedCard.classList.contains('card') && (activeCards.length < 2)) {
         console.log(selectedCard);
         selectedCard.classList.toggle('show');
         selectedCard.classList.toggle('open');
         activateCard(selectedCard);
     }
-})
+});
 
 // This function will be used to push cards onto the 'activeCards' array when they have been selected. Will have a maximum of 2 cards
 function activateCard(selectedCard) {
-activeCards.push(selectedCard);
-console.log(activeCards);
-} 
+    activeCards.push(selectedCard)
+    console.log(activeCards);
+}
 
 
 /*
