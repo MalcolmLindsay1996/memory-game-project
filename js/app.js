@@ -2,6 +2,18 @@
  * Create a list that holds all of your cards
  */
 
+// Creating a node list of the cards by selecting the parent element 
+const deck = document.querySelector('.deck')
+console.log(deck);
+
+
+//  Implementing event delegation in order to detect when a card has been selected, this is computationally more efficient then adding event listeners to each of the cards individually 
+deck.addEventListener('click', event => {
+    const selectedCard = event.target;
+    if(selectedCard.classList.contains('card')) {
+        console.log(selectedCard);
+    }   
+})
 
 /*
  * Display the cards on the page
