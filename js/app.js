@@ -3,7 +3,7 @@
  */
 
 // Creating a node list of the cards by selecting the parent element 
-const deck = document.querySelector('.deck')
+const deck = document.querySelector('.deck');
 console.log(deck);
 
 // Two cards will be added to this array and will be used to check whether the cards match
@@ -13,7 +13,7 @@ let activeCards = [];
 deck.addEventListener('click', event => {
     const selectedCard = event.target;
     if (selectedCard.classList.contains('card') && (activeCards.length < 2)) {
-        console.log(selectedCard);
+        // console.log(selectedCard);
         selectedCard.classList.toggle('show');
         selectedCard.classList.toggle('open');
         activateCard(selectedCard);
@@ -25,18 +25,31 @@ deck.addEventListener('click', event => {
 
 // This function will be used to push cards onto the 'activeCards' array when they have been selected. Will have a maximum of 2 cards
 function activateCard(selectedCard) {
-    activeCards.push(selectedCard)
-    console.log(activeCards);
+    activeCards.push(selectedCard);
 }
 
+// This function will check if the cards that have been selected are a match and update their class if they are. Otherwise it will deactivate the cards are remove them from the activeCards array
 function checkMatch() {
-    if (activeCards[0].childNodes[1] ==
-        activeCards[1].childNodes[1]) {
+    if (activeCards[0].firstElementChild.className ===
+        activeCards[1].firstElementChild.className) {
         console.log("match");
+        activeCards[0].classList.toggle('match');
+        activeCards[1].classList.toggle('match');
+        activeCards = [];
+    } else {
+        // setTimeout function used so that player has sufficient time to view both cards before it is unselected
+        setTimeout(() => {
+            toggleSelectedCard(activeCards[0]);
+            toggleSelectedCard(activeCards[1]);
+            activeCards = [];
+        }, 1500);
     }
-    else {
-        console.log("not match");
-    }
+}
+
+// This function toggles the classes which are active when a class has been selected 
+function toggleSelectedCard(selectedCard) {
+    selectedCard.classList.toggle('show');
+    selectedCard.classList.toggle('open');
 }
 
 /*
