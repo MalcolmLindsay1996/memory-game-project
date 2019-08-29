@@ -6,6 +6,8 @@
 const deck = document.querySelector('.deck')
 console.log(deck);
 
+// Two cards will be added to this array and will be used to check whether the cards match
+let activeCards = [];
 
 //  Implementing event delegation in order to detect when a card has been selected, this is computationally more efficient then adding event listeners to each of the cards individually 
 deck.addEventListener('click', event => {
@@ -14,8 +16,16 @@ deck.addEventListener('click', event => {
         console.log(selectedCard);
         selectedCard.classList.toggle('show');
         selectedCard.classList.toggle('open');
-    }   
+        activateCard(selectedCard);
+    }
 })
+
+// This function will be used to push cards onto the 'activeCards' array when they have been selected. Will have a maximum of 2 cards
+function activateCard(selectedCard) {
+activeCards.push(selectedCard);
+console.log(activeCards);
+} 
+
 
 /*
  * Display the cards on the page
